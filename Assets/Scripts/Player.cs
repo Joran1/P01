@@ -20,11 +20,16 @@ public class Player : MonoBehaviour {
 
         Vector3 pos = transform.position;
 
-        pos.y += Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        transform.position = pos;
+        //UP
+        if(Input.GetAxis("Vertical") > 0) { pos.y += speed * Time.deltaTime; transform.position = pos; }
+        //DOWN
+        if (Input.GetAxis("Vertical") < 0) { pos.y += -1 * speed * Time.deltaTime; transform.position = pos; }
 
-        pos.x += Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        transform.position = pos;
+        //LEFT
+        if (Input.GetAxis("Horizontal") < 0) { pos.x += -1 * speed * Time.deltaTime; transform.position = pos; }
+        
+        //RIGHT
+        if (Input.GetAxis("Horizontal") > 0) { pos.x += speed * Time.deltaTime; transform.position = pos; }
 
         //RESTRICT/////////////////////////////////////////////////////
 
